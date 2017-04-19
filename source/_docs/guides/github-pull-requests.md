@@ -19,7 +19,7 @@ This guide describes how to use GitHub and Circle CI with Composer to implement 
       </div>
       <div class="terminus-plugin">
         <h3 class="plugin-title">GitHub</h3>
-          <p class="topic-info__description">[GitHub](https://github.org) is an online service that provides cloud storage Git repositories that may be cloned and used locally or edited directly through their web-based management interface. These features are very useful to teams collaborating on a project together.</p>
+          <p class="topic-info__description"><a href="https://github.org">GitHub</a> is an online service that provides cloud storage Git repositories that may be cloned and used locally or edited directly through their web-based management interface. These features are very useful to teams collaborating on a project together.</p>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ This guide describes how to use GitHub and Circle CI with Composer to implement 
       </div>
       <div class="terminus-plugin">
         <h3 class="plugin-title">Circle CI</h3>
-        <p class="topic-info__description">[Circle CI](https://circleci.com) provides hosted services to run automated tests for a project, and GitHub provides mechanisms that allow these tests to run whenever a change is submitted. The process of testing each set of changed files prior to merging them into the branch where development is being done is called continuous integration.</p>
+        <p class="topic-info__description"><a href="https://circleci.com">Circle CI</a> provides hosted services to run automated tests for a project, and GitHub provides an integration to run these tests to whenever a change is submitted. The process of testing each set of changed files prior to merging them into the main branch is called continuous integration.</p>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@ This guide describes how to use GitHub and Circle CI with Composer to implement 
       </div>
       <div class="terminus-plugin">
           <h3 class="plugin-title">Composer</h3>
-          <p class="topic-info__description">[Composer](https://getcomposer.org) is a PHP dependency manager that provides an alternative, more modern way to manage the external code used by a project. For example, Composer may be used to install the modules and themes used by a Drupal site.</p>
+          <p class="topic-info__description"><a href="https://getcomposer.org">Composer</a> is a PHP dependency manager that provides an alternative, more modern way to manage the external code used by a project. For example, Composer may be used to install the modules and themes used by a Drupal site.</p>
       </div>
     </div>
   </div>
