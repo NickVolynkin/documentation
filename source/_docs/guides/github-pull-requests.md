@@ -61,23 +61,27 @@ In some cases, use of Composer is optional; however, some Drupal modules, such a
 
 ## Setting Up a New Project
 
-Install Composer.
+Setting up multiple distributed services can be complicated, and, at the moment, this can only be done from the command line. Fortunately, the Terminus Build Tools Plugin makes this setup relatively simple. To use it:
 
-Install Terminus.
+- Install [Composer](https://getcomposer.org).
+- Install [Terminus](https://github.com/pantheon-systems/terminus#installation).
+- Install the [Terminus Build Tools Plugin](https://github.com/pantheon-systems/terminus-build-tools-plugin#installation).
+- Generate a [machine token](https://pantheon.io/docs/machine-tokens/) and [log in with Terminus](https://pantheon.io/docs/terminus/install/#authenticate).
 
-Install the Terminus Build Tools Plugin.
-
-Once these components have been installed, the Terminus Build Tools Plugin may be used to create a new GitHub project, spin up a new Pantheon site to run it on, and configure Circle CI to automatically run tests for your site.
+Then, run the command:
 ```
-terminus build-env:create-project --team="Agency Org Name" d8 example-site
+terminus build-env:create-project my-pantheon-site
 ```
-You should always specify your Pantheon agency organization name when creating a new project, as this enables the use of Pantheon's multidev feature on your new project. Sign up for Pantheon for Agencies if you have not already done so.
+Select a suitable descriptive name to use in place of "my-pantheon-site". The create-project command will prompt for any additional information it may need to set up the build workflow. The required information needed includes:
 
-You will need to create credentials for GitHub and Circle CI.
+- GitHub [personal access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+- Circle CI [personal API token](https://circleci.com/account/api).
+- Password for the CMS admin account.
+- The Pantheon team the site should be associated with (recommended).
 
-You will be asked to type in the password that you would like to assign to the admin account on the test sites created when running your project's tests.
+It is possible to avoid prompting by providing the necessary information either via [environment variables](https://github.com/pantheon-systems/terminus-build-tools-plugin#credentials) or command line options. Run `terminus help build-env:create-project`, or see the [Terminus Build Tools Plugin project page](https://github.com/pantheon-systems/terminus-build-tools-plugin) for more information.
 
-The rest of the process is automatic. Once your site is ready, the URL to your project page will be printed out. Copy this address and paste it into a browser to visit your new project.
+Once you have provided the required information, the rest of the process is automatic. Once your site is ready, the URL to your project page will be printed to your terminal window. Copy this address and paste it into a browser to visit your new project.
 
 ## Your Site's Project Page
 
