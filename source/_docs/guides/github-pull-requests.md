@@ -70,28 +70,36 @@ Setting up multiple distributed services can be complicated, and, at the moment,
 
 Then, run the command:
 ```
-terminus build-env:create-project my-pantheon-site
+terminus build-env:create-project my-pantheon-project
 ```
-Select a suitable descriptive name to use in place of "my-pantheon-site". The create-project command will prompt for any additional information it may need to set up the build workflow. The required information needed includes:
+Select a suitable descriptive name to use in place of "my-pantheon-project". The create-project command will prompt for any additional information it may need to set up the build workflow. The required information needed includes:
 
 - GitHub [personal access token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
 - Circle CI [personal API token](https://circleci.com/account/api).
-- Password for the CMS admin account.
+- Password for the CMS admin account, used to log in to your test environments.
 - The Pantheon team the site should be associated with (recommended).
+
+Answer the questions when prompted, as shown below:
+
+![Create Project Prompts](/source/docs/assets/images/pr-workflow/build-env-create-project-prompts.png)
 
 It is possible to avoid prompting by providing the necessary information either via [environment variables](https://github.com/pantheon-systems/terminus-build-tools-plugin#credentials) or command line options. Run `terminus help build-env:create-project`, or see the [Terminus Build Tools Plugin project page](https://github.com/pantheon-systems/terminus-build-tools-plugin) for more information.
 
-Once you have provided the required information, the rest of the process is automatic. Once your site is ready, the URL to your project page will be printed to your terminal window. Copy this address and paste it into a browser to visit your new project.
+Once you have provided the required information, the rest of the process is automatic. Once your site is ready, the URL to your project page on GitHub will be printed to your terminal window. Copy this address and paste it into a browser to visit your new project.
 
-## Your Site's Project Page
+## Your Project Page
 
-Your starting project page contains badges that link to:
+Your project page will start off with a README file that is initially blank, save for the project title and three badges:
+
+![Initial Project Page](/source/docs/assets/images/pr-workflow/initial-project-page.png)
+
+The badges on your project page are linked to locations you will frequently visit while working on your site.
 
 - The Circle CI page for your project
 - Your Pantheon dashboard
 - Your test site
 
-Click on these badges to quickly navigate to the different components used to manage your site. If you click on the Circle CI badge, you can watch you project's initial test run.
+Click on these badges to quickly navigate to the different components used to manage your site. If you click on the Circle CI badge, you can watch your project's initial test run. Once your tests successfully complete, the orange Circle CI "no tests" badge will become a green "passed" badge.
 
 ## Create a Pull Request
 
@@ -113,7 +121,7 @@ On the pull request page, click on `Create Pull Request`.
 
 At this point, Circle CI will build a new multidev environment and install a site that you can use to preview the change.
 
-## Your Project's Behat Tests
+## Behat Tests
 
 There are tests provided for your site. You can customize these or add more to suit your purposes.
 
