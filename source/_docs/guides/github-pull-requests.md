@@ -99,27 +99,31 @@ The badges on your project page are linked to locations you will frequently visi
 - Your Pantheon dashboard
 - Your test site
 
-Click on these badges to quickly navigate to the different components used to manage your site. If you click on the Circle CI badge, you can watch your project's initial test run. Once your tests successfully complete, the orange Circle CI "no tests" badge will become a green "passed" badge.
+Click on these badges to quickly navigate to the different components used to manage your site. If you click on the Circle CI badge, you can watch your project's initial test run. Once your tests successfully complete, the orange Circle CI "no tests" badge will become a green "passing" badge.
 
 ## Create a Pull Request
 
 When using the Composer pull request workflow, you should never modify your dev environment. Always begin by creating a new pull request to work in. This can be done easily from GitHub, as described below. Presently, there is no way to create a pull request from the Pantheon dashboard.
 
-From your GitHub project page, click on the `config` directory. Find the file named `system.site.yml`, click on it, and use the edit pencil to open an editor.
+From your GitHub project page, click on the 'config' directory. Find the file named `system.site.yml`, click on it, and use the edit pencil to open an editor. See example below:
 
-Change the `slogan` to something inspiring like `Synergizing Cross-Functional Competencies to Iteratively Maximize Customer Value`.
+![system.site.yml Configuration](/source/docs/assets/images/pr-workflow/system-site-config.png)
 
-Describe your change in the "Commit Changes" area.
+Next, change the `slogan` to something inspiring:
 
-Click the radio button to create a new branch.
+![Edit slogan](/source/docs/assets/images/pr-workflow/edit-slogan.png)
 
-Give the branch a short name, like `slogan`.
+Once you are finished editing the configuration file, describe the change you made in the "Commit Changes" area. Then, click on the radio button to create a new branch and give it a short name, like `slogan`. Click on `Commit Changes`.
 
-Click on `Commit Changes`.
+![Create slogan branch](/source/docs/assets/images/pr-workflow/create-slogan-branch.png)
 
 On the pull request page, click on `Create Pull Request`.
 
+![Slogan pull request](/source/docs/assets/images/pr-workflow/slogan-pull-request.png)
+
 At this point, Circle CI will build a new multidev environment and install a site that you can use to preview the change.
+
+![Passed pull request](/source/docs/assets/images/pr-workflow/slogan-pr-passed.png)
 
 ## Behat Tests
 
