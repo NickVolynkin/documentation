@@ -121,27 +121,23 @@ On the pull request page, click on `Create Pull Request`.
 
 ![Slogan pull request](/source/docs/assets/images/pr-workflow/slogan-pull-request.png)
 
-At this point, Circle CI will build a new multidev environment and install a site that you can use to preview the change.
+At this point, Circle CI will build a new multidev environment and install a site that you can use to preview the change. Once the multidev environment has been created, the build script will add a comment to the pull request with links to the dashboard panel for the environment, and to the test site created on Pantheon.
 
-![Passed pull request](/source/docs/assets/images/pr-workflow/slogan-pr-passed.png)
+![Passed pull request](/source/docs/assets/images/pr-workflow/slogan-pr-starting.png)
 
-## Behat Tests
+Click on the `Visit Site` button and you will be brought to the test site. You can log on to the `admin` account for this site using the password you provided to the `build-env:create-project` command.
 
-There are tests provided for your site. You can customize these or add more to suit your purposes.
+![Site initial login](/source/docs/assets/images/pr-workflow/pr-slogan-site.png)
 
-To confirm that your site's configuration has been applied to the test site, you could add a test to check that the site slogan is correct.
+This site will persist for as long as the pull request remains open.
 
 ## Configuring Your Site Through Drupal's Admin Interface
 
-While it is possible to configure your site by editing the exported configuration files, it will usually be more convenient to use the Drupal Admin interface to build your site.
+While it is possible to configure your site by editing the exported configuration files, doing so is only convenient for properties whose location and format are already known. For most users, using the Drupal admin interface to set up the site's configuration is much more convenient.
 
-Log in to your `pr-slogan` multidev site.
+As an illustrative example, we will set the block placements for our example site. As a site administrator, navigate to `Structure` -> `Blocks`. Disable the `Tools` block and move the `Search` block to the header. Save your changes.
 
-Go to `Structure` -> `Blocks`.
-
-Disable the `Tools` block and move the `Search` block to the header.
-
-Save your changes.
+![Site initial login](/source/docs/assets/images/pr-workflow/block-placements.png)
 
 Go to `Configuration` -> `Development` -> `Configuration Synchronization`. Note the warning about modified configuration. This means that your recent configuration changes would be erased if you synchronized your configuration at this time.
 
@@ -161,15 +157,15 @@ When using the Composer workflow, you should never use the Drupal `Extend` -> `I
 
 Run:
 ```
-terminus composer site.env -- require drupal/path_auto
+terminus composer my-pantheon-project.pr-slogan -- require drupal/path_auto
 ```
 Visit your test site and use `Extend` to enable your module, or use Drush to do it.
 ```
-terminus drush site.env -- pm-enable path_auto --yes
+terminus drush my-pantheon-project.pr-slogan -- pm-enable path_auto --yes
 ```
 Export your configuration as shown above, or do it with Drush.
 ```
-terminus drush site.env -- config-export --yes
+terminus drush my-pantheon-project.pr-slogan -- config-export --yes
 ```
 Visit your Pantheon dashboard and commit your changes.
 
@@ -181,7 +177,7 @@ Using your existing pull request.
 
 Run:
 ```
-terminus composer site.env -- update
+terminus composer my-pantheon-project.pr-slogan -- update
 ```
 Visit your Pantheon dashboard and commit your changes.
 
@@ -191,7 +187,7 @@ Most Drupal sites will have a custom theme. This is how the appearance of a Drup
 
 Use Drupal Console to create a new theme.
 ```
-terminus drupal site.env -- generate:theme
+terminus drupal my-pantheon-project.pr-slogan -- generate:theme
 ```
 Answer a bunch of questions.
 
@@ -199,7 +195,7 @@ Open up a generated .css file using SFTP mode.
 
 Make a minor change.
 ```
-terminus drush site.env -- cache-rebuild
+terminus drush my-pantheon-project.pr-slogan -- cache-rebuild
 ```
 See the change on your test site.
 
@@ -207,11 +203,19 @@ Visit your Pantheon dashboard and commit your change.
 
 Maybe link to another page on LESS / SASS here?
 
+## Behat Tests
+
+There are tests provided for your site. You can customize these or add more to suit your purposes.
+
+To confirm that your site's configuration has been applied to the test site, you could add a test to check that the site slogan is correct.
+
 ## Merge your Pull Request
 
 Go to your GitHub project page. Visit your open pull request.
 
 Note that your tests have completed, and the test results are green.
+
+![Passed pull request](/source/docs/assets/images/pr-workflow/slogan-pr-passed.png)
 
 Click on `Merge`.
 
